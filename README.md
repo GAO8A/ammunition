@@ -25,8 +25,8 @@ To draw a cartridge:
 <script>
 
 let round = new Ammo({
-		  element: document.querySelector('.foo'),
-			name:'7.62x39',
+      element: document.querySelector('.foo'),
+      name:'7.62x39',
       bullet: 'rifle',
       stroke: '#323232'
     });
