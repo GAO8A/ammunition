@@ -23,12 +23,14 @@ To draw a cartridge:
 
 ```html
 <script>
-var round = new Ammo({
-						element: document.querySelector('.foo'),
-						name:'7.62x39',
-            bullet: 'rifle',
-            stroke: '#323232'
-					});		
+
+let round = new Ammo({
+		  element: document.querySelector('.foo'),
+			name:'7.62x39',
+      bullet: 'rifle',
+      stroke: '#323232'
+    });
+
 </script>
 
 <div class="foo"></div>

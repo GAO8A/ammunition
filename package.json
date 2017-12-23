@@ -2,6 +2,7 @@
   "name": "ammunition",
   "version": "0.0.1",
   "description": "Modern cartridges drawn to spec with D3v4",
+  "main": "ammunition.js",
   "scripts": {
     "build": "echo \"Error: no test specified\" && exit 1"
   },
