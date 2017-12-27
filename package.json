@@ -1,6 +1,6 @@
 {
   "name": "ammunition",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Modern cartridges drawn to spec with D3v4",
   "main": "ammunition.js",
   "scripts": {
