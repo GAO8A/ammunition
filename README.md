@@ -1,6 +1,7 @@
 # Ammunition.js
 
-Modern cartridges drawn to specifcations with D3v4. Dimensions are based on SAAMI with tolerances averaged. **This library is currently a work in progress.** Only specifications for SAAMI pistol and rifle cartridges are presently available.
+**This library is currently a work in progress.**
+Modern cartridges drawn to specifcations with D3v4. Dimensions are based on SAAMI with tolerances averaged.  Only specifications for SAAMI pistol and rifle cartridges are presently available.
 
 ## Installation
 
