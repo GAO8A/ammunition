@@ -3,15 +3,19 @@
 **This library is currently a work in progress.**
 Modern cartridges drawn to specifcations with D3v4. Dimensions are based on SAAMI with tolerances averaged.  Only specifications for SAAMI pistol and rifle cartridges are presently available.
 
+Currently available as a Node.js CLI that generates SVGs (`ammunition-cli.js`) or a D3v4 plugin `ammunition.js`.
+
 ## Installation
 
-1. Install package
+Install CLI package
 
 ```
-npm install ammunition
+npm install ammunition -g
 ```
 
-2. Include d3v4 and ammunition.js on your page.
+**_Or_**
+
+Include d3v4 and ammunition.js on your page.
 
 ```html
 <script src="path/to/d3.js" />
@@ -21,6 +25,28 @@ npm install ammunition
 ## Usage
 
 To draw a cartridge:
+
+```
+
+$ ammunition -b <bullet type> -s <stroke color> <cartridge name>
+
+Options:
+
+-b, --bullet: Bullet type, <string>, optional 
+-s, --stroke: Stroke color use hex, rgb or css colors, <string>, defaults to #333
+
+Cartridge Name:
+Exact SAAMI name <string>
+
+
+Examples:
+
+$ ammunition -b "rifle" -s "#323232" "7.62x39"
+$ ammunition -b "standard" -s "red" "9mm Luger"
+
+```
+
+**_As a D3 plugin_**
 
 ```html
 <script>

@@ -2,7 +2,7 @@
   "name": "ammunition",
   "version": "0.0.2",
   "description": "Modern cartridges drawn to spec with D3v4",
-  "main": "ammunition.js",
+  "main": "ammunition-cli.js",
   "scripts": {
     "build": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,12 +21,18 @@
   ],
   "author": "Rick Gao",
   "license": "MIT",
+  "bin": {
+    "ammunition": "./ammunition-cli.js"
+  },
   "bugs": {
     "url": "https://github.com/GAO8A/ammunition/issues"
   },
   "homepage": "https://github.com/GAO8A/ammunition#readme",
   "dependencies": {
-    "d3": "^4.12.0"
+    "commander": "^2.12.2",
+    "d3": "^4.12.0",
+    "d3-node": "^1.1.3",
+    "svgo": "^1.0.3"
   },
   "devDependencies": {}
 }
