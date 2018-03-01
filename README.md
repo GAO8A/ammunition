@@ -46,6 +46,14 @@ let round = new Ammo({
 `stroke` Specifies the stroke color of cartridge. Defaults to **_#333_** if left blank.
 
 
+## Related
+
+Do have a look at:
+
+* [Projectiles](https://www.npmjs.com/package/projectiles): Open source Projectile Dataset
+* [cartridges](https://www.npmjs.com/package/cartridges): Open source dataset of all known ammunition cartridges
+
+
 ## LICENSE 
 MIT
 
