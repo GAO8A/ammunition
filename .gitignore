@@ -58,3 +58,13 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# Build output; src/data/*.ts is generated from data/*.csv by `npm run data`
+dist/
+src/data/pistol.ts
+src/data/rifle.ts
+src/data/rimfire.ts
+src/data/shotshell.ts
+
+# Python
+__pycache__/

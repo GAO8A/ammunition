@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ammunition Gallery</title>
+<style>
+  :root { --bg:#f7f6f2; --fg:#1f1f1f; --muted:#6b6b6b; --line:#dedbd2; --brass:#9a7212; --brass-fill:#f1dfa8; --lead:#7b5a4a; --lead-fill:#e3cbbd; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141518; --fg:#e8e6e1; --muted:#9a978f; --line:#2c2d31; --brass:#e0b545; --brass-fill:#3d3218; --lead:#d0a08a; --lead-fill:#3a2a24; } }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:16px; background:var(--bg); color:var(--fg); font:14px/1.45 system-ui, sans-serif; }
+  header { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:end; margin-bottom:12px; }
+  h1 { font-size:20px; margin:0 auto 0 0; }
+  label { display:flex; flex-direction:column; font-size:12px; color:var(--muted); gap:2px; }
+  input, select { font:inherit; padding:4px 6px; border:1px solid var(--line); border-radius:6px; background:transparent; color:var(--fg); }
+  h2 { font-size:15px; margin:20px 0 8px; padding-bottom:4px; border-bottom:1px solid var(--line); }
+  .grid { display:flex; flex-wrap:wrap; gap:10px 22px; align-items:flex-end; }
+  figure { margin:0; color:var(--brass); max-width:100%; }
+  figure svg { display:block; max-width:100%; height:auto; }
+  .ammo-case { fill:var(--brass-fill); }
+  .ammo-bullet { fill:var(--lead-fill); stroke:var(--lead); }
+  figcaption { color:var(--muted); font-size:12px; margin-top:2px; }
+  .empty { color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Ammunition gallery</h1>
+  <label>Search <input id="q" type="search" placeholder="308, magnum, 12 gauge…"></label>
+  <label>Bullet
+    <select id="bullet"><option>auto</option><option>spitzer</option><option>roundnose</option><option>flatnose</option><option>wadcutter</option><option>none</option></select>
+  </label>
+  <label>Scale (px/in) <input id="scale" type="range" min="40" max="240" value="110"></label>
+</header>
+<main id="out"></main>
+<script type="module">
+  import { all, render } from "../dist/index.js";
+  const groups = [["rifle", "Rifle"], ["pistol", "Pistol"], ["rimfire", "Rimfire"], ["shotshell", "Shotshell"]];
+  const $ = (id) => document.getElementById(id);
+  function draw() {
+    const q = $("q").value.trim().toLowerCase();
+    const opts = { bullet: $("bullet").value, scale: Number($("scale").value), strokeWidth: 1.2 };
+    let html = "";
+    for (const [cat, label] of groups) {
+      const rows = all.filter((r) => r.category === cat &&
+        (!q || [r.name, ...(r.aliases ?? [])].some((n) => n.toLowerCase().includes(q))));
+      if (!rows.length) continue;
+      html += `<h2>${label} (${rows.length})</h2><div class="grid">`;
+      for (const r of rows) html += `<figure>${render(r, opts)}<figcaption>${r.name}</figcaption></figure>`;
+      html += "</div>";
+    }
+    $("out").innerHTML = html || `<p class="empty">No cartridges match.</p>`;
+  }
+  for (const id of ["q", "bullet", "scale"]) $(id).addEventListener("input", draw);
+  draw();
+</script>
+</body>
+</html>

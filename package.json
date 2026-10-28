@@ -1,32 +1,27 @@
 {
   "name": "ammunition",
-  "version": "0.0.3",
-  "description": "Modern cartridges drawn to spec with D3v4",
-  "main": "ammunition.js",
-  "scripts": {
-    "build": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GAO8A/ammunition.git"
-  },
-  "keywords": [
-    "ammunition",
-    "cartridges",
-    "ammo",
-    "saami",
-    "bullets",
-    "d3",
-    "svg"
-  ],
-  "author": "Rick Gao",
+  "version": "1.0.0-alpha.0",
+  "description": "SAAMI cartridge and shotshell dimensions, and SVG drawings generated from them",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/GAO8A/ammunition/issues"
-  },
+  "author": "Rick Gao",
+  "repository": "github:GAO8A/ammunition",
+  "bugs": { "url": "https://github.com/GAO8A/ammunition/issues" },
   "homepage": "https://github.com/GAO8A/ammunition#readme",
-  "dependencies": {
-    "d3": "^4.12.0"
+  "keywords": ["ammunition", "cartridges", "ammo", "saami", "bullets", "svg"],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./data": { "types": "./dist/data/index.d.ts", "default": "./dist/data/index.js" }
   },
-  "devDependencies": {}
+  "files": ["dist", "data"],
+  "scripts": {
+    "data": "node scripts/build-data.mjs",
+    "build": "npm run data && tsc",
+    "test": "npm run build && node --test test/render.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.6.3"
+  },
+  "engines": { "node": ">=18" }
 }
